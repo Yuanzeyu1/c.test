@@ -1,0 +1,44 @@
+/*/////求解方程：ax^2+bx+c=0////////////*/
+#include <stdio.h>
+#include <math.h>
+int main(void)
+{
+	float a, b, c, delta, p, q, x1, x2;
+	printf("请输入方程系数：");
+	scanf_s("%f%f%f", &a, &b, &c);
+	if (a == 0)
+	{
+		if (b == 0)
+		{
+			if (c == 0)
+				printf("方程有无穷多解!\n");
+			else
+				printf("方程无解！\n");
+		}
+		else
+		{
+			x1 = x2 = -c / b;
+			printf("方程有一个解：x1=x2=%f\n", x1);
+		}
+	}
+	else
+	{
+		delta = b * b - 4 * a*c;
+		if (delta >= 0)
+		{
+			p = -b / (2 * a);
+			q = sqrt(delta) / (2 * a);
+			x1 = p + q;
+			x2 = p - q;
+			printf("方程解：x1=%f   x2=%f\n", x1, x2);
+		}
+		else
+		{
+			p = -b / (2 * a);
+			q = sqrt(-delta) / (2 * a);
+			printf("方程解：x1=%f+%fi   x2=%f-%fi\n", p, q, p, q);
+		}
+	}
+	getchar();
+	return 0;
+}
